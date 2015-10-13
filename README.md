@@ -1,5 +1,9 @@
 # Recreating the Past - John Maeda's _10 Morisawa Posters_
 
+![ca-morisawa_8-thumb](https://cloud.githubusercontent.com/assets/73099/10464187/7885d8d8-71b6-11e5-9a8b-3f03647733a2.jpg)
+
+_Morisawa 8, Recreated_ ([see original](https://500px.com/photo/4813904/morisawa-8-by-john-maeda))
+
 ### Environment for development
 
 1. `brew install entr`
