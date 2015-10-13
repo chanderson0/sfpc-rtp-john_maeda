@@ -1,0 +1,225 @@
+%!PS
+%%DocumentMedia: a3 842 1191 80 () ()
+
+%%BeginProlog
+/m { moveto } bind def
+/c { curveto } bind def
+/l { lineto } bind def
+/h { closepath } bind def
+/f { fill } bind def
+
+/min { 2 copy gt { exch } if pop } bind def
+/max { 2 copy lt { exch } if pop } bind def
+
+/c1 {
+  -6.342 -46.124 m
+  -13.224 -44.627 -19.353 -39.315 -22.853 -31.807 c
+  -25.224 -26.729 -25.877 -23.432 -25.877 -16.569 c
+  -25.877 -11.678 l
+  -51.799 -11.678 l
+  -51.799 11.841 l
+  -25.877 11.841 l
+  -25.877 23.120 l
+  -51.799 23.120 l
+  -51.799 46.642 l
+  51.881 46.642 l
+  51.881 23.120 l
+  5.080 23.120 l
+  5.080 11.841 l
+  51.881 11.841 l
+  51.881 -11.678 l
+  5.053 -11.678 l
+  5.127 -15.959 l
+  5.201 -20.237 5.201 -20.245 5.897 -21.241 c
+  6.276 -21.791 6.979 -22.483 7.455 -22.780 c
+  8.322 -23.319 l
+  30.104 -23.385 l
+  51.881 -23.448 l
+  51.881 -46.479 l
+  23.502 -46.459 l
+  0.869 -46.444 -5.174 -46.377 -6.342 -46.124 c
+  h
+} def
+
+/c2 {
+  46.115 46.636 m
+  15.158 46.636 l
+  15.158 -19.770 l
+  14.599 -20.829 l
+  14.291 -21.411 13.580 -22.208 13.017 -22.606 c
+  11.994 -23.325 l
+  -3.104 -23.391 l
+  -18.206 -23.458 l
+  -18.206 -46.497 l
+  26.076 -46.364 l
+  28.541 -45.497 l
+  31.865 -44.325 34.474 -42.708 37.138 -40.176 c
+  41.490 -36.036 44.396 -30.731 45.630 -24.665 c
+  46.087 -22.438 46.115 -21.383 46.115 -7.630 c
+  h
+
+  -46.045 18.195 m
+  -46.045 46.636 l
+  -18.444 46.636 l
+  -18.444 -10.247 l
+  -46.045 -10.247 l
+  h
+} def
+
+/c3 {
+  -62.160 7.000 m
+  -43.680 7.000 l
+  -43.680 -10.282 l
+  -16.078 -10.282 l
+  -16.078 7.000 l
+  11.519 7.000 l
+  11.519 -6.450 l
+  11.519 -19.325 11.500 -19.938 11.051 -20.821 c
+  10.461 -21.981 9.363 -22.911 8.215 -23.231 c
+  7.660 -23.383 3.117 -23.477 -3.777 -23.477 c
+  -14.879 -23.481 l
+  -14.879 -46.520 l
+  3.203 -46.520 l
+  23.859 -46.520 22.945 -46.602 27.480 -44.375 c
+  34.680 -40.840 40.035 -33.555 42.140 -24.442 c
+  42.504 -22.867 42.566 -20.782 42.656 -7.821 c
+  42.758 7.000 l
+  62.160 7.000 l
+  62.160 30.281 l
+  42.723 30.281 l
+  42.723 46.602 l
+  11.519 46.602 l
+  11.519 30.281 l
+  -16.078 30.281 l
+  -16.078 46.602 l
+  -43.680 46.602 l
+  -43.680 30.281 l
+  -62.160 30.281 l
+  h
+} def
+
+/c4 {
+  -49.200 -10.247 m
+  -21.598 -10.247 l
+  -21.598 23.355 l
+  18.249 23.355 l
+  18.183 1.417 l
+  18.120 -20.520 l
+  17.374 -21.442 l
+  16.965 -21.950 16.266 -22.583 15.817 -22.844 c
+  15.031 -23.309 14.504 -23.329 0.780 -23.391 c
+  -13.438 -23.462 l
+  -13.438 -46.497 l
+  7.980 -46.430 l
+  29.403 -46.364 l
+  31.864 -45.497 l
+  39.222 -42.903 45.023 -36.704 47.769 -28.501 c
+  49.269 -24.024 49.203 -25.946 49.203 11.976 c
+  49.203 46.636 l
+  -49.200 46.636 l
+  -49.200 30.316 l
+  h
+} def
+
+/john {
+  0 0.001 1 {
+    gsave
+      dup %% Local copy of fract val
+      360 mul %% Translate to degrees
+      3.5 mul %% Number of cos turns
+      cos %% cos value
+
+      1 exp
+      1 %% Push 1 for y
+      scale
+
+      dup %% Local copy of fract val
+      -675 mul %% Multiply it by scaling factor
+      0 exch %% Push 0 for x
+      translate
+
+      dup %% Local copy of fract val
+      1 exch sub % Map 1->0
+      1 scale
+
+      dup %% Local copy of fract val
+      dup mul % square val 0->1
+      0.3 add % map 0.3->1
+      1 min % max at 1
+      setgray
+
+      1 index % Copy 2nd val to top of stack
+      cvx exec % Run callback
+      stroke
+    grestore
+
+    pop % Remove iter from stack
+  } for
+
+  pop % Remove callback from stack
+} def
+%%EndProlog
+
+%% Move to drawing place
+
+115 1090 translate
+1.9 1.9 scale
+
+%% Draw background paths
+
+gsave
+  0.001 setlinewidth
+
+  gsave
+    0 0 translate %% c1 home position
+    /c1 john
+  grestore
+
+  gsave
+    103.5 0 translate %% c2 home position
+    /c2 john
+  grestore
+
+  gsave
+    211.7 0 translate %% c3 home position
+    /c3 john
+  grestore
+
+  gsave
+    323 0 translate %% c4 home position
+    /c4 john
+  grestore
+grestore
+
+%% Draw characters
+
+gsave
+  gsave
+    0 0 translate %% c1 home position
+    c1
+    f
+  grestore
+
+  gsave
+    103.5 0 translate %% c2 home position
+    c2
+    f
+  grestore
+
+  gsave
+    211.7 0 translate %% c3 home position
+    c3
+    f
+  grestore
+
+  gsave
+    323 0 translate %% c4 home position
+    c4
+    f
+  grestore
+grestore
+
+showpage
+
+%%Trailer
+%%EOF
