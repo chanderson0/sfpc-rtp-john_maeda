@@ -23,7 +23,8 @@ _Morisawa 8, Animated_ ([see original](https://500px.com/photo/4813904/morisawa-
 
 ### Export
 
-`convert -density 300 -background white -alpha remove -resize 1413x2000 -quality 80 output.pdf FILENAME.jpg`
+1. `ps2pdf -sPAPERSIZE=a3 -dOptimize=true morisawa_8.ps output.pdf`
+2. `convert -density 300 -background white -alpha remove -resize 1413x2000 -quality 80 output.pdf FILENAME.jpg`
 
 ### Animation
 
