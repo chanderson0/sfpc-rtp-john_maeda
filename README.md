@@ -1,8 +1,16 @@
 # Recreating the Past - John Maeda's _10 Morisawa Posters_
 
-![ca-morisawa_8-thumb](https://cloud.githubusercontent.com/assets/73099/10464187/7885d8d8-71b6-11e5-9a8b-3f03647733a2.jpg)
+![ca-morisawa_8-animated](https://38.media.tumblr.com/0a8b2a94a072d6b202651ff601485bfe/tumblr_nw6bumsqyU1ui4qufo1_r1_400.gif)
 
-_Morisawa 8, Recreated_ ([see original](https://500px.com/photo/4813904/morisawa-8-by-john-maeda))
+_Morisawa 8, Animated_ ([see original](https://500px.com/photo/4813904/morisawa-8-by-john-maeda))
+
+**_With upfront apologies for any spaghetti code! (especially the animation code, jeez)_**
+
+### Requirements
+
+- Ghostscript
+- ImageMagick (for animation)
+- Python 3 (for animation)
 
 ### Environment for development
 
@@ -16,3 +24,19 @@ _Morisawa 8, Recreated_ ([see original](https://500px.com/photo/4813904/morisawa
 ### Export
 
 `convert -density 300 -background white -alpha remove -resize 1413x2000 -quality 80 output.pdf FILENAME.jpg`
+
+### Animation
+
+#### Generate
+
+1. `python generate_morisawa.py`
+2. `mkdir out_img`
+3. `gs -r300 -dDownScaleFactor=6 -sDEVICE=pnggray -sOutputFile=out_img/out-%d.png -dBATCH -dNOPAUSE -sPAPERSIZE=a3 out_ps/*.ps`
+4. Sometimes Ghostscript outputs bad frames, so go into `./out_img` and delete them. (brownie points if you figure out why!)
+5. `convert out_img/*.png -reverse out_img/*.png -set delay 5 -loop 0 -filter LanczosRadius -distort Resize 60% animation.gif`
+
+#### Edit
+
+1. Edit the `morisawa_fun.ps.tpl` file, putting in `!!REPLACEMENT!!` strings where appropriate.
+2. Edit `generate_morisawa.py` to replace the above strings as desired.
+3. Probably clear the `./out_ps` directory
