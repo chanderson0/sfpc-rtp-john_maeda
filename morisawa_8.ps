@@ -2,15 +2,19 @@
 %%DocumentMedia: a3 842 1191 80 () ()
 
 %%BeginProlog
+
+% Define short versions of functions
 /m { moveto } bind def
 /c { curveto } bind def
 /l { lineto } bind def
 /h { closepath } bind def
 /f { fill } bind def
 
+% Min and max (not actually used in the code below)
 /min { 2 copy gt { exch } if pop } bind def
 /max { 2 copy lt { exch } if pop } bind def
 
+% Character 1
 /c1 {
   -6.342 -46.124 m
   -13.224 -44.627 -19.353 -39.315 -22.853 -31.807 c
@@ -41,6 +45,7 @@
   h
 } def
 
+% Character 2 (in two shapes)
 /c2 {
   46.115 46.636 m
   15.158 46.636 l
@@ -66,6 +71,7 @@
   h
 } def
 
+% Character 3
 /c3 {
   -62.160 7.000 m
   -43.680 7.000 l
@@ -98,6 +104,7 @@
   h
 } def
 
+% Character 4
 /c4 {
   -49.200 -10.247 m
   -21.598 -10.247 l
@@ -121,15 +128,16 @@
   h
 } def
 
+% Function to transform shapes
+% Takes one value from the stack: a callback function that
+%   draws a shape to be stroked
 /john {
   0 0.001 1 {
     gsave
       dup %% Local copy of fract val
       360 mul %% Translate to degrees
       3.5 mul %% Number of cos turns
-      cos %% cos value
-
-      1 exp
+      cos %% cos value, so it looks loopy
       1 %% Push 1 for y
       scale
 
@@ -150,7 +158,7 @@
 
       1 index % Copy 2nd val to top of stack
       cvx exec % Run callback
-      stroke
+      stroke % Actually draw!
     grestore
 
     pop % Remove iter from stack
