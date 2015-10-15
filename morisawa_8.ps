@@ -10,7 +10,7 @@
 /h { closepath } bind def
 /f { fill } bind def
 
-% Min and max (not actually used in the code below)
+% Min and max, since they're not built in.
 /min { 2 copy gt { exch } if pop } bind def
 /max { 2 copy lt { exch } if pop } bind def
 
@@ -134,6 +134,9 @@
 /john {
   0 0.001 1 {
     gsave
+      % First scale: manipulate the size of the character
+      %   from large to small and back again.
+
       dup %% Local copy of fract val
       360 mul %% Translate to degrees
       3.5 mul %% Number of cos turns
@@ -141,14 +144,22 @@
       1 %% Push 1 for y
       scale
 
+      % Translate the character down the page.
+
       dup %% Local copy of fract val
       -675 mul %% Multiply it by scaling factor
       0 exch %% Push 0 for x
       translate
 
+      % Second scale: make the character get smaller
+      %   as you go down the page.
+
       dup %% Local copy of fract val
       1 exch sub % Map 1->0
-      1 scale
+      1 %% Push 1 for y
+      scale
+
+      % Set gray value to get lighter down hte page
 
       dup %% Local copy of fract val
       dup mul % square val 0->1
